@@ -47,7 +47,7 @@ function Register() {
 
           <form onSubmit={registerUser}>
             <input
-              type="text"
+              type="email"
               placeholder="Email"
               required
               value={email}
