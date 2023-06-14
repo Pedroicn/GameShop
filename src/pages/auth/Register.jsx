@@ -40,7 +40,6 @@ function Register() {
   return (
     <section className={`container ${styles.auth}`}>
       {isLoading && <Loader />}
-      <ToastContainer />
       <Card>
         <div className={styles.form}>
           <h2>Register</h2>
