@@ -3,7 +3,7 @@ import registerImg from "../../assets/register.png";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/card/Card";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
@@ -25,7 +25,7 @@ function Register() {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        // const user = userCredential.user;
         setIsLoading(false);
         toast.success("Registration Successful");
         navigate("/login");

@@ -5,7 +5,7 @@ import styles from "./auth.module.scss";
 import { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase/config";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Loader from "../../components/loader/Loader";
 
 function Reset() {

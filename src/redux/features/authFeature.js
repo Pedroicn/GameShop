@@ -19,10 +19,16 @@ const authFeature = createSlice({
       state.userName = userName;
       state.userId = userId;
     },
+    REMOVE_ACTIVE_USER: (state, action) => {
+      state.isLoggedIn = false;
+      state.email = null;
+      state.userName = null;
+      state.userId = null;
+    },
   },
 });
 
-export const { SET_ACTIVE_USER } = authFeature.actions;
+export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } = authFeature.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 

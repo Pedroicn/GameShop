@@ -5,9 +5,12 @@ import { FaShoppingCart, FaTimes, FaUserCircle } from "react-icons/fa";
 import { HiOutlineMenu } from "react-icons/hi";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { SET_ACTIVE_USER } from "../../redux/features/authFeature";
+import {
+  SET_ACTIVE_USER,
+  REMOVE_ACTIVE_USER,
+} from "../../redux/features/authFeature";
 
 const logo = (
   <div className={styles.logo}>
@@ -59,9 +62,10 @@ function Header() {
         );
       } else {
         setName("");
+        dispatch(REMOVE_ACTIVE_USER());
       }
     });
-  });
+  }, [dispatch, name]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -121,7 +125,7 @@ function Header() {
               <NavLink to="/login" className={activeLink}>
                 Login
               </NavLink>
-              <a href="#">
+              <a href="#home">
                 <FaUserCircle size={16} />
                 Welcome {name}
               </a>
