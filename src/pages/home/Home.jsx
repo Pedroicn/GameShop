@@ -1,10 +1,12 @@
 import React from "react";
 import Slider from "../../components/slider/Slider";
+import AdminOnlyRoute from "../../components/adminOnlyRoute/AdminOnlyRoute";
 
 function Home() {
   return (
     <div>
-      <Slider />
+      {/* <Slider /> */}
+      <h1>Home Page</h1>
     </div>
   );
 }

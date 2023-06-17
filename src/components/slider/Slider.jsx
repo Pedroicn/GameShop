@@ -23,16 +23,15 @@ function Slider() {
     setCurrentSlide(0);
   }, []);
 
-  const auto = () => {
-    slideInterval = setInterval(nextSlide, intervalTime);
-  };
-
   useEffect(() => {
     if (autoScroll) {
+      const auto = () => {
+        slideInterval = setInterval(nextSlide, intervalTime);
+      };
       auto();
     }
     return () => clearInterval(slideInterval);
-  }, [currentSlide, slideInterval, autoScroll, auto]);
+  }, [currentSlide, slideInterval, autoScroll]);
 
   return (
     <div className="slider">
