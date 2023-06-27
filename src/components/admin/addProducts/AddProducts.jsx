@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./AddProducts.module.scss";
 import Card from "../../card/Card";
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
 
 const categories = [
   { id: 1, name: "Console" },
@@ -13,19 +14,37 @@ function AddProducts() {
   const [product, setProduct] = useState({
     name: "",
     imageURL: "",
-    price: null,
+    price: 0,
     category: "",
     brand: "",
     desc: "",
   });
 
-  const handleInputChange = (e) => {};
-  const handleImageChange = (e) => {};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProduct({
+      ...product,
+      [name]: value,
+    });
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    // console.log(file);
+    const storage = getStorage();
+    const storageRef = ref(storage, `gameshop/${Date.now()}${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+  };
+
+  const addProduct = (e) => {
+    e.preventDefault();
+    console.log(product);
+  };
+
   return (
     <div className={styles.product}>
       <h1>Add New Product</h1>
       <Card cardClass={styles.card}>
-        <form action="">
+        <form onSubmit={addProduct}>
           <label>Product name:</label>
           <input
             type="text"
@@ -51,7 +70,8 @@ function AddProducts() {
             />
             <input
               type="text"
-              required
+              // required
+              placeholder="Image URL"
               name="imageURL"
               value={product.imageURL}
               disabled
