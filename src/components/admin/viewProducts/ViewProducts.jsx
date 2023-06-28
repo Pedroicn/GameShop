@@ -53,7 +53,7 @@ function ViewProducts() {
       "Delete",
       "Cancel",
       function okCb() {
-        deleteObject(id, imageURL);
+        deleteProduct(id, imageURL);
       },
       function cancelCb() {
         console.log("Delete canceled");
