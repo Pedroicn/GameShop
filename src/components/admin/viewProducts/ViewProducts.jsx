@@ -15,10 +15,14 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loader from "../../loader/Loader";
 import { deleteObject, ref } from "firebase/storage";
 import Notiflix from "notiflix";
+import { useDispatch } from "react-redux";
+import { STORE_PRODUCTS } from "../../../redux/features/productFeature";
 
 function ViewProducts() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getProducts();
@@ -36,9 +40,14 @@ function ViewProducts() {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(allProducts);
         setProducts(allProducts);
+        console.log(allProducts);
         setIsLoading(false);
+        dispatch(
+          STORE_PRODUCTS({
+            products: allProducts,
+          })
+        );
       });
     } catch (error) {
       setIsLoading(false);
@@ -100,11 +109,11 @@ function ViewProducts() {
                 <th>Actions</th>
               </tr>
             </thead>
-            {products.map((product, index) => {
+            {products?.map((product, index) => {
               const { id, name, price, imageURL, category } = product;
               return (
-                <tbody>
-                  <tr key={id}>
+                <tbody key={id}>
+                  <tr>
                     <td>{index + 1}</td>
                     <td>
                       <img
