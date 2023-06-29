@@ -109,11 +109,11 @@ function ViewProducts() {
                 <th>Actions</th>
               </tr>
             </thead>
-            {products?.map((product, index) => {
-              const { id, name, price, imageURL, category } = product;
-              return (
-                <tbody key={id}>
-                  <tr>
+            <tbody>
+              {products?.map((product, index) => {
+                const { id, name, price, imageURL, category } = product;
+                return (
+                  <tr key={id}>
                     <td>{index + 1}</td>
                     <td>
                       <img
@@ -126,7 +126,7 @@ function ViewProducts() {
                     <td>{category}</td>
                     <td>{`R$ ${price}`}</td>
                     <td className={styles.icons}>
-                      <Link to="/admin/add-products">
+                      <Link to={`/admin/add-products/${id}`}>
                         <FaEdit size={20} color="green" />
                       </Link>
                       &nbsp;
@@ -137,9 +137,9 @@ function ViewProducts() {
                       />
                     </td>
                   </tr>
-                </tbody>
-              );
-            })}
+                );
+              })}
+            </tbody>
           </table>
         )}
       </div>

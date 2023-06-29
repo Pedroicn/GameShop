@@ -28,7 +28,7 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/admin/add-products" className={activeLink}>
+            <NavLink to="/admin/add-products/ADD" className={activeLink}>
               Add Products
             </NavLink>
           </li>
