@@ -15,13 +15,27 @@ app.get("/", (req, res) => {
   res.send("Welcome to gameshop!");
 });
 
+const array = [];
+const calculateOrderAmount = (items) => {
+  items.map((item) => {
+    const { price, cartQuantity } = item;
+    const cartItemAmount = price * cartQuantity;
+    return array.push(cartItemAmount);
+  });
+  const totalAmount = array.reduce((a, b) => {
+    return a + b;
+  }, 0);
+
+  return totalAmount * 100;
+};
+
 app.post("/create-payment-intent", async (req, res) => {
   const { items, shipping, description } = req.body;
 
   // Create a PaymentIntent with the order amount and currency..
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
-    currency: "usd",
+    currency: "brl",
     automatic_payment_methods: {
       enabled: true,
     },
