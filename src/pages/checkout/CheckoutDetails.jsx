@@ -8,6 +8,7 @@ import {
 } from "../../redux/features/checkoutFeature";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import CheckoutSummary from "../../components/checkoutSummary/CheckoutSummary";
 
 const initialAddressState = {
   name: "",
@@ -223,6 +224,11 @@ function CheckoutDetails() {
               <button type="submit" className="--btn --btn-primary">
                 Proceed To Checkout
               </button>
+            </Card>
+          </div>
+          <div>
+            <Card cardClass={styles.card}>
+              <CheckoutSummary />
             </Card>
           </div>
         </form>
