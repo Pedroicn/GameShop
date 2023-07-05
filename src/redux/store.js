@@ -3,12 +3,14 @@ import authReducer from "./features/authFeature";
 import productReducer from "./features/productFeature";
 import filterReducer from "./features/filterFeature";
 import cartReducer from "./features/cartFeature";
+import checkoutReducer from "./features/checkoutFeature";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   product: productReducer,
   filter: filterReducer,
   cart: cartReducer,
+  checkout: checkoutReducer,
 });
 
 const store = configureStore({
