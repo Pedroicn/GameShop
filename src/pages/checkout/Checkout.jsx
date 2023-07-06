@@ -14,6 +14,7 @@ import {
   selectShippingAddress,
 } from "../../redux/features/checkoutFeature";
 import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
+import { toast } from "react-toastify";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 function Checkout() {

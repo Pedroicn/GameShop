@@ -35,6 +35,6 @@ export const selectEmail = (state) => state.auth.email;
 
 export const selectUserName = (state) => state.auth.userName;
 
-export const selectUserId = (state) => state.auth.useId;
+export const selectUserId = (state) => state.auth.userId;
 
 export default authFeature.reducer;
