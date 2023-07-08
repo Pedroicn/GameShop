@@ -4,6 +4,7 @@ import productReducer from "./features/productFeature";
 import filterReducer from "./features/filterFeature";
 import cartReducer from "./features/cartFeature";
 import checkoutReducer from "./features/checkoutFeature";
+import orderReducer from "./features/orderFeature";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   filter: filterReducer,
   cart: cartReducer,
   checkout: checkoutReducer,
+  orders: orderReducer,
 });
 
 const store = configureStore({
