@@ -12,24 +12,24 @@ const orderFeature = createSlice({
     STORE_ORDERS(state, action) {
       state.orderHistory = action.payload;
     },
-    // CALC_TOTAL_ORDER_AMOUNT(state, action) {
-    //   const array = [];
-    //   state.orderHistory.map((item) => {
-    //     const { orderAmount } = item;
-    //     return array.push(orderAmount);
-    //   });
-    //   const totalAmount = array.reduce((a, b) => {
-    //     return a + b;
-    //   }, 0);
-    //   state.totalOrderAmount = totalAmount;
-    // },
+    CALC_TOTAL_ORDER_AMOUNT(state, action) {
+      const array = [];
+      state.orderHistory.map((item) => {
+        const { orderAmount } = item;
+        return array.push(orderAmount);
+      });
+      const totalAmount = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      state.totalOrderAmount = totalAmount;
+    },
   },
 });
 
-export const { STORE_ORDERS } = orderFeature.actions;
+export const { STORE_ORDERS, CALC_TOTAL_ORDER_AMOUNT } = orderFeature.actions;
 
 export const selectOrderHistory = (state) => state.orders.orderHistory;
 
-// export const selectTotalOrderAmount = (state) => state.orders.totalOrderAmount;
+export const selectTotalOrderAmount = (state) => state.orders.totalOrderAmount;
 
 export default orderFeature.reducer;
