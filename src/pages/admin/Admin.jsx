@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import ViewProducts from "../../components/admin/viewProducts/ViewProducts";
 import AddProducts from "../../components/admin/addProducts/AddProducts";
 import Orders from "../../components/admin/orders/Orders";
-
+import OrderDetails from "../../components/admin/orderDetails/OrderDetails";
 function Admin() {
   return (
     <div className={styles.admin}>
@@ -19,6 +19,7 @@ function Admin() {
           <Route path="all-products" element={<ViewProducts />} />
           <Route path="add-products/:id" element={<AddProducts />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="order-details/:id" element={<OrderDetails />} />
         </Routes>
       </div>
     </div>
